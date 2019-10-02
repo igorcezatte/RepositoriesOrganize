@@ -45,11 +45,11 @@ export default class Main extends Component {
     try {
       const { newRepo, repositories } = this.state;
 
-      if (newRepo === '') throw 'Digite um repositório'();
+      if (newRepo === '') throw new Error('Digite um repositório');
 
       const hasRepo = repositories.find(r => r.name === newRepo);
 
-      if (hasRepo) throw 'Repositório já adicionado'();
+      if (hasRepo) throw new Error('Repositório já adicionado');
 
       const response = await api.get(`/repos/${newRepo}`);
 
